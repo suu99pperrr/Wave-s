@@ -5,6 +5,22 @@ import io
 import math
 import random
 import colorsys
+import os
+from threading import Thread
+from flask import Flask
+
+# Simple web server to keep Render happy
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "🌊 Epic Welcome Bot is ONLINE! 🌊"
+
+def run_web():
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
+# Start web server in background
+Thread(target=run_web, daemon=True).start()
 
 # Bot configuration
 intents = discord.Intents.default()
@@ -461,9 +477,5 @@ async def create_epic_welcome_image(member):
         return None
 
 # Run the bot
-# ... rest of your bot code above ...
-
-# Run the bot
 if __name__ == "__main__":
-    import os
-    bot.run(os.getenv('TOKEN'))
+    bot.run('YOUR_BOT_TOKEN_HERE')
