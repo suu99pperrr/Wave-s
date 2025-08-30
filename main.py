@@ -478,4 +478,4 @@ async def create_epic_welcome_image(member):
 
 # Run the bot
 if __name__ == "__main__":
-    bot.run('YOUR_BOT_TOKEN_HERE')
+    bot.run(os.getenv('TOKEN'))
